@@ -1,0 +1,39 @@
+version: "3"
+services:
+    api-gateway:
+        build:
+            context: "."
+            dockerfile: "./api-gateway/Dockerfile"
+        depends_on:
+            - book-service
+            - user-service
+        environment:
+            - PORT=3000
+            - USER_SERVICE_URI=http://user-service:3100
+            - BOOK_SERVICE_URI=http://book-service:3101
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./api-gateway:/opt/app
+
+    user-service:
+        build:
+            context: "."
+            dockerfile: "./user-service/Dockerfile"
+        environment:
+            - PORT=3100
+        ports:
+            - "3100:3100"
+        volumes:
+            - ./user-service:/opt/app
+
+    book-service:
+        build:
+            context: "."
+            dockerfile: "./book-service/Dockerfile"
+        environment:
+            - PORT=3101
+        ports:
+            - "3101:3101"
+        volumes:
+            - ./book-service:/opt/app

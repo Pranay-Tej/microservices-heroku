@@ -7,12 +7,11 @@ services:
         depends_on:
             - book-service
             - user-service
-        environment:
-            - PORT=3000
-            - USER_SERVICE_URI=http://user-service:3100
-            - BOOK_SERVICE_URI=http://book-service:3101
+        # environment:
+        #     - USER_SERVICE_URI=http://user-service:3100
+        #     - BOOK_SERVICE_URI=http://book-service:3101
         ports:
-            - "3000:3000"
+            - "8080:8080"
         volumes:
             - ./api-gateway:/opt/app
 
@@ -22,8 +21,8 @@ services:
             dockerfile: "./user-service/Dockerfile"
         environment:
             - PORT=3100
-        ports:
-            - "3100:3100"
+        # ports:
+        #     - "3100:3100"
         volumes:
             - ./user-service:/opt/app
 
@@ -33,7 +32,7 @@ services:
             dockerfile: "./book-service/Dockerfile"
         environment:
             - PORT=3101
-        ports:
-            - "3101:3101"
+        # ports:
+        #     - "3101:3101"
         volumes:
             - ./book-service:/opt/app

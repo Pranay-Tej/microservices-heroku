@@ -6,7 +6,7 @@ const app: Application = express();
 // Middleware
 app.use(morgan("dev"));
 // Routes
-app.get("/", function (req: Request, res: Response) {
+app.get("/books", function (req: Request, res: Response) {
     res.send({ message: "Book Service!" });
 });
 

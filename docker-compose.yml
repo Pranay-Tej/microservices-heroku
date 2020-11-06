@@ -2,8 +2,8 @@ version: "3"
 services:
     api-gateway:
         build:
-            context: "."
-            dockerfile: "./api-gateway/Dockerfile"
+            context: "./api-gateway/"
+            dockerfile: "./Dockerfile"
         depends_on:
             - book-service
             - user-service
@@ -13,26 +13,26 @@ services:
         ports:
             - "8080:8080"
         volumes:
-            - ./api-gateway:/opt/app
+            - ./api-gateway:/usr/src/app
 
     user-service:
         build:
-            context: "."
-            dockerfile: "./user-service/Dockerfile"
+            context: "./user-service/"
+            dockerfile: "./Dockerfile"
         environment:
             - PORT=3100
         # ports:
         #     - "3100:3100"
         volumes:
-            - ./user-service:/opt/app
+            - ./user-service:/usr/src/app
 
     book-service:
         build:
-            context: "."
-            dockerfile: "./book-service/Dockerfile"
+            context: "./book-service/"
+            dockerfile: "./Dockerfile"
         environment:
             - PORT=3101
         # ports:
         #     - "3101:3101"
         volumes:
-            - ./book-service:/opt/app
+            - ./book-service:/usr/src/app

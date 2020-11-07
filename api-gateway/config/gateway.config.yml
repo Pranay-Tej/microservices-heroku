@@ -1,5 +1,5 @@
 http:
-    port: 8080
+    port: ${PORT}
 admin:
     port: 9876
     host: localhost
@@ -17,9 +17,9 @@ serviceEndpoints:
     httpbin:
         url: "https://httpbin.org"
     userService:
-        url: "http://user-service:3100"
+        url: "http://localhost:3100"
     bookService:
-        url: "http://book-service:3101"
+        url: "http://localhost:3101"
 policies:
     - basic-auth
     - cors

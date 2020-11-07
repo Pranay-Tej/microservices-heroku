@@ -11,5 +11,5 @@ app.get("/books", function (req: Request, res: Response) {
 });
 
 // Server Port
-const PORT = process.env.PORT || 3101;
+const PORT = 3101;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
